@@ -14,3 +14,4 @@ migrated
 bin
 htmlcov
 cov.xml
+.DS_Store

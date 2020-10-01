@@ -209,10 +209,10 @@ class BotApp(App):
                     self.config.values["portal_url"] + "/api/bot/alive",
                     headers=headers,
                 )
-                self.config.logger.info("Sent alive to Automagica Portal.")
+                self.config.logger.info("Sent alive to Aichieve Portal.")
             except:
                 self.config.logger.exception(
-                    "Could not reach Automagica Portal."
+                    "Could not reach Aichieve Portal."
                 )
 
             sleep(interval)
@@ -382,7 +382,7 @@ class BotApp(App):
             except:
                 NotificationWindow(self, message="Connection error")
                 self.config.logger.exception(
-                    f"Could not reach Automagica Portal. Waiting {interval} second(s) before retrying."
+                    f"Could not reach Aichieve Portal. Waiting {interval} second(s) before retrying."
                 )
                 sleep(interval)
 

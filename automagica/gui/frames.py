@@ -165,7 +165,7 @@ class ConsoleFrame(tk.Frame):
         self.console_text.insert(
             "1.0",
             _(
-                "Welcome to Automagica Flow!  \nUse this Interactive Console to your liking!\n\n"
+                "Welcome to Aichieve Flow!  \nUse this Interactive Console to your liking!\n\n"
             ),
         )
         self.console_text.configure(
@@ -543,7 +543,7 @@ class ToolbarFrame(tk.Frame):
         run_frame.pack(side="left", padx=20, pady=5)
 
         wand_frame = ToolbarLabelFrame(
-            self, text=_("Automagica Wand (Powered by AI)")
+            self, text=_("Aichieve Wand (Powered by AI)")
         )
 
         record_click_button = ToolbarImageButton(
@@ -730,7 +730,7 @@ class ToolbarFrame(tk.Frame):
 
         file_path = filedialog.askopenfilename(
             initialdir="./",
-            title=_("Select Automagica Flow"),
+            title=_("Select Aichieve Flow"),
             filetypes=[("Flow (.json)", "*.json")],
         )
 
@@ -747,7 +747,7 @@ class ToolbarFrame(tk.Frame):
 
         # Update title
         self.parent.master.title(
-            "{} - Automagica Flow".format(self.parent.master.file_path)
+            "{} - Aichieve Flow".format(self.parent.master.file_path)
         )
 
         # Render flow
@@ -772,7 +772,7 @@ class ToolbarFrame(tk.Frame):
 
         # Update title
         self.master.master.title(
-            "{} - Automagica Flow".format(self.master.master.flow.file_path)
+            "{} - Aichieve Flow".format(self.master.master.flow.file_path)
         )
 
         NotificationWindow(self, "Saved flow")
@@ -821,7 +821,7 @@ class SidebarFrame(tk.Frame):
         HelpButton(
             self,
             message=_(
-                "Activities are the basic building blocks of Automagica. By tieing activities together, you get a Flow."
+                "Activities are the basic building blocks of Aichieve. By tieing activities together, you get a Flow."
             ),
         ).place(relx=1, rely=0, anchor="ne")
 
@@ -832,46 +832,10 @@ class SidebarFrame(tk.Frame):
         HelpButton(
             self,
             message=_(
-                "Special nodes allow you to control the way the Flow runs. It also allows you to extend the capabilities of your Flow beyond the activities that Automagica has to offer."
+                "Special nodes allow you to control the way the Flow runs. It also allows you to extend the capabilities of your Flow beyond the activities that Aichieve has to offer."
             ),
         ).place(relx=1, rely=0.65, anchor="ne")
 
-        # Instructions
-        self.instructions_frame = self.create_instructions_frame()
-        self.instructions_frame.place(
-            relx=0, rely=0.85, relheight=0.1, relwidth=1
-        )
-
-    def create_instructions_frame(self):
-        """
-        Instructions frame
-        """
-        frame = tk.Frame(self, bg=config.COLOR_4)
-
-        self.instructions_label = tk.Label(
-            frame,
-            text=_("Instructions"),
-            anchor="w",
-            font=font.Font(family=config.FONT, size=12),
-            justify="left",
-            fg=config.COLOR_0,
-            bg=config.COLOR_4,
-        )
-        self.instructions_label.pack()
-
-        self.instructions = tk.Label(
-            frame,
-            font=font.Font(family=config.FONT, size=10),
-            text=_(
-                "Left-click drag: move node\nDouble-click: properties\nMiddle-click: remove"
-            ),
-            anchor="w",
-            fg=config.COLOR_11,
-            bg=config.COLOR_4,
-        )
-        self.instructions.pack()
-
-        return frame
 
     def create_nodes_frame(self):
         """

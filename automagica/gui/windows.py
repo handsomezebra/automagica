@@ -144,7 +144,7 @@ class FlowDesignerWindow(Window):
             self._autosave_cycle()
 
         self._layout()
-        self.center(w=1300, h=720)
+        self.center(w=1152, h=648)
 
     def _autosave_cycle(self):
         """
@@ -238,9 +238,9 @@ class FlowDesignerWindow(Window):
         Window configuration
         """
         if self.flow.file_path:
-            self.title("{} - Automagica Flow".format(self.flow.file_path))
+            self.title("{} - Aichieve Flow".format(self.flow.file_path))
         else:
-            self.title(_("Unsaved Flow") + " - Automagica Flow")
+            self.title(_("Unsaved Flow") + " - Aichieve Flow")
 
         self.option_add("*Background", config.COLOR_1)
         self.configure(bg=config.COLOR_1)
@@ -705,7 +705,7 @@ class NotificationWindow(tk.Toplevel):
     """
 
     def __init__(
-        self, parent, message, *args, duration=1, title="Automagica", **kwargs
+        self, parent, message, *args, duration=1, title="Aichieve", **kwargs
     ):
         """
         Create notification window
@@ -1007,11 +1007,11 @@ class WandWindow(Window):
             from tkinter import messagebox
 
             yes = messagebox.askyesno(
-                _("Automagica Wand"),
+                _("Aichieve Wand"),
                 _(
-                    "To use Automagica Wand, please register on the \
-                        Automagica Portal and set up your bot. \n\n\
-                            Would you like to go to the Automagica Portal?"
+                    "To use Aichieve Wand, please register on the \
+                        Aichieve Portal and set up your bot. \n\n\
+                            Would you like to go to the Aichieve Portal?"
                 ),
                 parent=self,
             )
@@ -1154,7 +1154,7 @@ class WandWindow(Window):
         """
         Create the layout for the window
         """
-        self.title(_("Automagica Wand"))
+        self.title(_("Aichieve Wand"))
 
         # Minimap Frame
         self.minimap_frame = self.create_minimap_frame()
@@ -1348,7 +1348,7 @@ class WandWindow(Window):
             accepted = messagebox.askyesno(
                 _("Important"),
                 _(
-                    "By continuing, the information you provided in the previous steps will be uploaded to Automagica's Portal. You can find the full terms on https://portal.automagica.com/tos. Do you accept the terms? You will only be prompted once on this machine."
+                    "By continuing, the information you provided in the previous steps will be uploaded to Aichieve's Portal. You can find the full terms on https://portal.automagica.com/tos. Do you accept the terms? You will only be prompted once on this machine."
                 ),
                 parent=self.master,
             )
