@@ -9,7 +9,6 @@ from functools import wraps
 from uuid import getnode, uuid4
 
 import psutil
-from automagica.httpclient import http_client
 
 AUTOMAGICA_ACTIVITIES = []
 
@@ -35,13 +34,10 @@ def activity(func):
             name = func.__name__
 
         logging.info("Automagica (activity): {}".format(name))
-        telemetry(func)
 
         try:
             return func(*args, **kwargs)
-
         except Exception as e:
-            telemetry_exception(func, e)
             raise
 
     return wrapper
@@ -97,82 +93,6 @@ def interpret_path(
         return str(out)
 
     return str(filepath)
-
-
-def telemetry(func):
-    """
-    Automagica Activity Telemetry
-
-    This allows us to collect information on the usage of 
-    certain Automagica functionalities in order for us to keep improving 
-    the software. If you would like to disable telemetry, make sure the 
-    environment variable 'AUTOMAGICA_NO_TELEMETRY' is set. That way no
-    information is being shared with us.
-    """
-    if not os.environ.get("AUTOMAGICA_NO_TELEMETRY") and not os.environ.get(
-        "AUTOMAGICA_URL"
-    ):
-        if func.__doc__:
-            name = func.__doc__.split("\n")[0]
-        else:
-            name = func.__name__
-
-        data = {
-            "activity": name,  # Name of the activity
-            "machine_id": getnode(),  # Unique (anonymous) identifier
-            "os": {
-                "name": os.name,  # Operating system name
-                "platform": platform.system(),  # Platform OS
-                "release": platform.release(),  # Version OS
-            },
-        }
-
-        try:
-            _ = http_client.post(
-                "https://telemetry.automagica.com/", json=data, timeout=1
-            )
-        except Exception:
-            logging.debug("Telemetry error")
-
-
-def telemetry_exception(func, exception):
-    """
-    Automagica Activity Telemetry for Exceptions
-
-    This allows us to collect information on the errors in usage of 
-    certain Automagica functionalities in order for us to keep improving 
-    the software. If you would like to disable telemetry, make sure the 
-    environment variable 'AUTOMAGICA_NO_TELEMETRY' is set. That way no
-    information is being shared with us.
-    """
-
-    error = exception.__class__.__name__
-
-    if not os.environ.get("AUTOMAGICA_NO_TELEMETRY") and not os.environ.get(
-        "AUTOMAGICA_URL"
-    ):
-        if func.__doc__:
-            name = func.__doc__.split("\n")[0]
-        else:
-            name = func.__name__
-
-        data = {
-            "activity": name,  # Name of the activity
-            "machine_id": getnode(),  # Unique (anonymous) identifier
-            "os": {
-                "name": os.name,  # Operating system name
-                "platform": platform.system(),  # Platform OS
-                "release": platform.release(),  # Version OS
-            },
-            "error": error,  # Class name of the error ("ValueError" or "ZeroDivisionError")
-        }
-
-        try:
-            _ = http_client.post(
-                "https://telemetry.automagica.com/errors", json=data, timeout=1
-            )
-        except Exception:
-            logging.debug("Telemetry error")
 
 
 def only_supported_for(*args):
@@ -337,6 +257,21 @@ def all_activities():
         if class_name != name:
             return class_name
 
+    def get_visibility(f):
+        """
+        Get the visibility for the Automagica activity
+        """
+        lines = [
+            line.strip() for line in f.__doc__.split("\n") if line.strip()
+        ]
+
+        for i, line in enumerate(lines):
+            if line.strip() == "Visibility":
+                return lines[i + 1].strip()
+
+        return ""
+
+
     activities = {}
 
     for f in AUTOMAGICA_ACTIVITIES:
@@ -348,6 +283,7 @@ def all_activities():
             "return": get_return(f),
             "class": get_class(f),
             "icon": get_icon(f), 
+            "visibility": get_visibility(f),
             "key": f.__module__ + "." + f.__qualname__,
             'function': f
         }

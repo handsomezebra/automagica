@@ -30,6 +30,7 @@ def generate_random_key():
 
     Icon
         las la-key
+
     """
     import os
     from cryptography.fernet import Fernet
@@ -1147,6 +1148,9 @@ class Chrome(selenium.webdriver.Chrome):
 
         Icon
             lab la-chrome
+
+        Visibility
+            sidebar
 
         """
         import platform
@@ -3640,7 +3644,9 @@ class Word:
 
         Icon
             lar la-file-word
-
+            
+        Visibility
+            sidebar
         """
         only_supported_for("Windows")
 
