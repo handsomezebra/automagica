@@ -827,7 +827,7 @@ class SidebarFrame(tk.Frame):
 
         # Nodes
         self.nodes_frame = self.create_nodes_frame()
-        self.nodes_frame.place(relx=0, rely=0.65, relheight=0.20, relwidth=1)
+        self.nodes_frame.place(relx=0, rely=0.65, relheight=0.30, relwidth=1)
 
         HelpButton(
             self,
@@ -847,7 +847,7 @@ class SidebarFrame(tk.Frame):
 
         self.nodes_label = tk.Label(
             frame,
-            text=_("Special Nodes"),
+            text=_("Goals"),
             anchor="w",
             justify="left",
             font=font.Font(family=config.FONT, size=12),
@@ -874,12 +874,10 @@ class SidebarFrame(tk.Frame):
         )
 
         self.node_types = [
-            ("Start", _("Start")),
-            ("IfElse", _("If Else")),
-            ("Loop", _("Loop")),
-            ("DotPyFile", _("Python Script (.py)")),
-            ("SubFlow", _("Sub-flow")),
-            ("PythonCode", _("Python Code")),
+            ("Email", _("Email")),
+            ("Phone Call", _("Phone Call")),
+            ("Web Form", _("Web Form")),
+            ("Calendar", _("Calendar")),
         ]
 
         for _, label in self.node_types:

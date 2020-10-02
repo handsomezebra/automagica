@@ -603,12 +603,11 @@ class ActivitySelectionFrame(tk.Frame):
 
         from automagica.utilities import all_activities
 
-        activities = all_activities()
-        self.activities = {k:v for k, v in activities.items() if "sidebar" in v["visibility"]}
+        self.activities = all_activities()
 
         self.nodes_label = tk.Label(
             self,
-            text=_("Activities"),
+            text=_("Tasks"),
             anchor="w",
             justify="left",
             font=font.Font(family=config.FONT, size=12),
@@ -621,7 +620,7 @@ class ActivitySelectionFrame(tk.Frame):
         self.search_entry = InputField(
             self,
             textvariable=self.query,
-            placeholder=_("Search activities..."),
+            placeholder=_("Search tasks..."),
         )
         self.query.trace("w", self.search_activities)
         self.search_entry.focus()

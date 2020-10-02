@@ -5,6 +5,91 @@ import selenium.webdriver
 import logging
 
 """
+LinkedIn Application
+Icon: las la-file-word
+"""
+
+
+class LinkedIn:
+    @activity
+    def __init__(self):
+        """Start LinkedIn Application
+
+        For this activity to work, Chrome need to be installed.
+
+        Keywords
+            linkedin
+
+        Icon
+            lar la-file-word
+
+        Visibility
+            task
+        """
+        pass
+
+    @activity
+    def login(self):
+        """Login
+
+        Login
+
+        Keywords
+            linkedin, login
+
+        Icon
+            las la-images
+
+        """
+        pass
+
+    @activity
+    def find_contact(self):
+        """Find contact
+
+        Find contact
+
+        Keywords
+            linkedin, find, contact
+
+        Icon
+            las la-images
+
+        """
+        pass
+
+    @activity
+    def invite_contact(self):
+        """Invite contact
+
+        Invite contact
+
+        Keywords
+            linkedin, find, contact
+
+        Icon
+            las la-images
+
+        """
+        pass
+
+    @activity
+    def send_message(self):
+        """Send message
+
+        Send message
+
+        Keywords
+            linkedin, send, message
+
+        Icon
+            las la-images
+
+        """
+        pass
+
+
+"""
 Cryptography
 Icon: las la-shield-alt
 """
@@ -1150,7 +1235,7 @@ class Chrome(selenium.webdriver.Chrome):
             lab la-chrome
 
         Visibility
-            sidebar
+            task
 
         """
         import platform
@@ -3644,9 +3729,9 @@ class Word:
 
         Icon
             lar la-file-word
-            
+
         Visibility
-            sidebar
+            task
         """
         only_supported_for("Windows")
 
