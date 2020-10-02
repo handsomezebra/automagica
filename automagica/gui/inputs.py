@@ -604,7 +604,7 @@ class ActivitySelectionFrame(tk.Frame):
         from automagica.utilities import all_activities
 
         activities = all_activities()
-        self.activities = [x for x in activities if "sidebar" in x["visibility"]]
+        self.activities = {k:v for k, v in activities.items() if "sidebar" in v["visibility"]}
 
         self.nodes_label = tk.Label(
             self,
