@@ -7,7 +7,7 @@ authors = ["Oakwood Technologies BVBA"]
 [tool.poetry.dependencies]
 python = "^3.7"
 urllib3 = {extras = ["secure"], version = "^1.25.10"}
-selenium = "4.0.0a6.post2"
+selenium = "3.141.0"
 openpyxl = "3.0.5"
 python-docx = "0.8.10"
 PyPDF2 = "1.26.0"

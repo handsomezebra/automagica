@@ -2,7 +2,6 @@
 import sys
 from distutils.core import setup
 
-import setuptools
 from setuptools.command.install import install
 
 
@@ -65,7 +64,7 @@ setup(
     packages=["automagica"],
     install_requires=[
         "urllib3[secure]==1.25.10",  # MIT License
-        "selenium==4.0.0a6.post2",  # Apache 2.0 License
+        "selenium==3.141.0",  # Apache 2.0 License
         "openpyxl==3.0.5",  # MIT License
         "python-docx==0.8.10",  # MIT License
         "PyPDF2==1.26.0",  # BSD 3-Clause "New" or "Revised" License
