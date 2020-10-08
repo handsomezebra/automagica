@@ -259,7 +259,7 @@ def all_activities():
 
     activities = {}
 
-    for f in AUTOMAGICA_ACTIVITIES:
+    for f in ACTIVITY_FUNCTIONS:
         activity = {
             "keywords": get_keywords(f),
             "name": get_name(f),
