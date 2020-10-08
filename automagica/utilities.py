@@ -10,18 +10,18 @@ from uuid import getnode, uuid4
 
 import psutil
 
-AUTOMAGICA_ACTIVITIES = []
+ACTIVITY_FUNCTIONS = []
 
 
 def activity(func):
     """
-    Wrapper for Automagica activities
+    Wrapper for activities
     """
-    global AUTOMAGICA_ACTIVITIES
+    global ACTIVITY_FUNCTIONS
 
-    # Register the activity under the AUTOMAGICA_ACTIVITIES global
-    if func not in AUTOMAGICA_ACTIVITIES:
-        AUTOMAGICA_ACTIVITIES.append(func)
+    # Register the activity under the ACTIVITY_FUNCTIONS global
+    if func not in ACTIVITY_FUNCTIONS:
+        ACTIVITY_FUNCTIONS.append(func)
 
     @wraps(func)
     def wrapper(*args, **kwargs):
@@ -33,7 +33,7 @@ def activity(func):
         else:
             name = func.__name__
 
-        logging.info("Automagica (activity): {}".format(name))
+        logging.info("Registering activity: {}".format(name))
 
         try:
             return func(*args, **kwargs)

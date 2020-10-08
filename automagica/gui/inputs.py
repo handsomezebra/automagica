@@ -7,7 +7,7 @@ from tkinter import filedialog, font, ttk
 from PIL import ImageTk
 
 from automagica import config
-from automagica.config import _, ICONS
+from automagica.config import _, ICONS, ACTIVITIES
 from automagica.gui.buttons import Button, ToolbarImageButton
 from automagica.gui.graphs import generate_icon
 
@@ -601,9 +601,7 @@ class ActivitySelectionFrame(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
         super().__init__(parent, *args, **kwargs)
 
-        from automagica.utilities import all_activities
-
-        self.activities = all_activities()
+        self.activities = ACTIVITIES
 
         self.nodes_label = tk.Label(
             self,
