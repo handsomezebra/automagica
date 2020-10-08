@@ -23,8 +23,6 @@ class LinkedIn:
         Icon
             lar la-file-word
 
-        Visibility
-            task
         """
         pass
 
@@ -1213,9 +1211,6 @@ class Chrome(selenium.webdriver.Chrome):
 
         Icon
             lab la-chrome
-
-        Visibility
-            task
 
         """
         import platform
@@ -3688,8 +3683,6 @@ class Word:
         Icon
             lar la-file-word
 
-        Visibility
-            task
         """
         only_supported_for("Windows")
 

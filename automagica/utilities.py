@@ -257,21 +257,6 @@ def all_activities():
         if class_name != name:
             return class_name
 
-    def get_visibility(f):
-        """
-        Get the visibility for the Automagica activity
-        """
-        lines = [
-            line.strip() for line in f.__doc__.split("\n") if line.strip()
-        ]
-
-        for i, line in enumerate(lines):
-            if line.strip() == "Visibility":
-                return lines[i + 1].strip()
-
-        return ""
-
-
     activities = {}
 
     for f in AUTOMAGICA_ACTIVITIES:
@@ -283,7 +268,6 @@ def all_activities():
             "return": get_return(f),
             "class": get_class(f),
             "icon": get_icon(f), 
-            "visibility": get_visibility(f),
             "key": f.__module__ + "." + f.__qualname__,
             'function': f
         }

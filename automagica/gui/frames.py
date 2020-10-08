@@ -715,7 +715,7 @@ class SidebarFrame(tk.Frame):
 
         self.nodes_label = tk.Label(
             frame,
-            text=_("Goals"),
+            text=_("Controls"),
             anchor="w",
             justify="left",
             font=font.Font(family=config.FONT, size=12),
@@ -742,10 +742,11 @@ class SidebarFrame(tk.Frame):
         )
 
         self.node_types = [
-            ("Email", _("Email")),
-            ("Phone Call", _("Phone Call")),
-            ("Web Form", _("Web Form")),
-            ("Calendar", _("Calendar")),
+            ("Start", _("Start")),
+            ("IfElse", _("If Else")),
+            ("Loop", _("Loop")),
+            ("SubFlow", _("Sub-flow")),
+            ("PythonCode", _("Python Code")),
         ]
 
         for _, label in self.node_types:
