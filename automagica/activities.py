@@ -95,7 +95,6 @@ Icon: las la-shield-alt
 """
 
 
-@activity
 def generate_random_key():
     """Random key
 
@@ -125,7 +124,6 @@ def generate_random_key():
     return key
 
 
-@activity
 def encrypt_text_with_key(text, key):
     """Encrypt text
 
@@ -160,7 +158,6 @@ def encrypt_text_with_key(text, key):
     return f.encrypt(text.encode("utf-8"))
 
 
-@activity
 def decrypt_text_with_key(encrypted_text, key):
     """Decrypt text
 
@@ -197,7 +194,6 @@ def decrypt_text_with_key(encrypted_text, key):
     return f.decrypt(encrypted_text).decode("utf-8")
 
 
-@activity
 def encrypt_file_with_key(input_path, key, output_path=None):
     """Encrypt file
 
@@ -251,7 +247,6 @@ def encrypt_file_with_key(input_path, key, output_path=None):
     return output_path
 
 
-@activity
 def decrypt_file_with_key(input_path, key, output_path=None):
     """Decrypt file
 
@@ -307,7 +302,6 @@ def decrypt_file_with_key(input_path, key, output_path=None):
     return output_path
 
 
-@activity
 def generate_key_from_password(password, salt=None):
     """Key from password
 
@@ -354,7 +348,6 @@ def generate_key_from_password(password, salt=None):
     return key
 
 
-@activity
 def generate_hash_from_file(input_path, method="md5", buffer_size=65536):
     """Hash from file
 
@@ -408,7 +401,6 @@ def generate_hash_from_file(input_path, method="md5", buffer_size=65536):
                 return hash_list.hexdigest()
 
 
-@activity
 def generate_hash_from_text(text, method="md5"):
     """Hash from text
 
@@ -452,7 +444,6 @@ Icon: las la-dice-d6
 """
 
 
-@activity
 def generate_random_number(lower_limit=0, upper_limit=100, fractional=False):
     """Random number
 
@@ -487,7 +478,6 @@ def generate_random_number(lower_limit=0, upper_limit=100, fractional=False):
         return random.randrange(lower_limit, upper_limit, 1)
 
 
-@activity
 def generate_random_data(locale=None, attribute=None):
     """Random data
 
@@ -602,7 +592,6 @@ def generate_random_data(locale=None, attribute=None):
         return gen.text.word()
 
 
-@activity
 def generate_random_boolean():
     """Random boolean
 
@@ -627,7 +616,6 @@ def generate_random_boolean():
     return bool(random.getrandbits(1))
 
 
-@activity
 def generate_random_name(locale=None, name=None):
     """Random name
 
@@ -702,7 +690,6 @@ def generate_random_name(locale=None, name=None):
         return person.full_name()
 
 
-@activity
 def generate_random_words(locale=None, type=None):
     """Random words
 
@@ -785,7 +772,6 @@ def generate_random_words(locale=None, type=None):
         return gen.sentence()
 
 
-@activity
 def generate_random_address(locale=None, format=None):
     """Random address
 
@@ -872,7 +858,6 @@ def generate_random_address(locale=None, format=None):
         return ad.address()
 
 
-@activity
 def generate_random_beep(max_duration=2000, max_frequency=5000):
     """Random beep
 
@@ -904,7 +889,6 @@ def generate_random_beep(max_duration=2000, max_frequency=5000):
     winsound.Beep(frequency, duration)
 
 
-@activity
 def generate_random_date(formatting="%m/%d/%Y %I:%M", days_in_past=1000):
     """Random date
 
@@ -969,7 +953,6 @@ def generate_random_date(formatting="%m/%d/%Y %I:%M", days_in_past=1000):
         return random_date
 
 
-@activity
 def generate_date_today(formatting="%m/%d/%Y"):
     """Today's date
 
@@ -1025,7 +1008,6 @@ def generate_date_today(formatting="%m/%d/%Y"):
         return today
 
 
-@activity
 def generate_unique_identifier():
     """Generate unique identifier
 
@@ -1056,7 +1038,6 @@ Icon: lab la-wpforms
 """
 
 
-@activity
 def display_osd_message(message="Example message", seconds=5):
     """Display overlay message
 
@@ -1141,7 +1122,6 @@ def display_osd_message(message="Example message", seconds=5):
                 pass
 
 
-@activity
 def print_console(data="Example print"):
     """Print message in console
 
@@ -1879,7 +1859,6 @@ Icon: las la-key
 """
 
 
-@activity
 def set_credential(username=None, password=None, system="Automagica"):
     """Set credential
 
@@ -1910,7 +1889,6 @@ def set_credential(username=None, password=None, system="Automagica"):
     keyring.set_password(system, username, password)
 
 
-@activity
 def delete_credential(username=None, password=None, system="Automagica"):
     """Delete credential
 
@@ -1939,7 +1917,6 @@ def delete_credential(username=None, password=None, system="Automagica"):
     keyring.delete_password(system, username)
 
 
-@activity
 def get_credential(username=None, system="Automagica"):
     """Get credential
 
@@ -2270,7 +2247,6 @@ def easy_key_translation(key):
     return key
 
 
-@activity
 def press_key(key=None, delay=1, perform_n_times=1, delay_between=0.5):
     """Press key
 
@@ -2333,7 +2309,6 @@ def press_key(key=None, delay=1, perform_n_times=1, delay_between=0.5):
             sleep(delay_between)
 
 
-@activity
 def press_key_combination(
     first_key, second_key, third_key=None, compatibility=False, delay=1
 ):
@@ -2480,7 +2455,6 @@ Icon: las la-mouse-pointer
 """
 
 
-@activity
 def get_mouse_position(delay=None, to_clipboard=False):
     """Get mouse coordinates
 
@@ -2519,7 +2493,6 @@ def get_mouse_position(delay=None, to_clipboard=False):
     return coord[0], coord[1]
 
 
-@activity
 def display_mouse_position(duration=10):
     """Display mouse position
 
@@ -2597,7 +2570,6 @@ def click(automagica_id, delay=1):
     click_()
 
 
-@activity
 def click_coordinates(x=None, y=None, delay=1):
     """Mouse click coordinates
 
@@ -2640,7 +2612,6 @@ def click_coordinates(x=None, y=None, delay=1):
         )
 
 
-@activity
 def double_click_coordinates(x=None, y=None, delay=1):
     """Double mouse click coordinates
 
@@ -2772,7 +2743,6 @@ def right_click(automagica_id=None, delay=1):
         )
 
 
-@activity
 def right_click_coordinates(x=None, y=None, delay=1):
     """Right click coordinates
 
@@ -3024,7 +2994,6 @@ Icon: las la-image
 """
 
 
-@activity
 def random_screen_snippet(size=100, output_path=None):
     """Random screen snippet
 
@@ -3129,7 +3098,6 @@ Icon: las la-folder-open
 """
 
 
-@activity
 def get_files_in_folder(
     input_path=None, extension=None, show_full_path=True, scan_subfolders=False
 ):
@@ -3193,7 +3161,6 @@ def get_files_in_folder(
         return paths
 
 
-@activity
 def create_folder(path=None):
     """Create folder
 
@@ -3231,7 +3198,6 @@ def create_folder(path=None):
         return path
 
 
-@activity
 def rename_folder(input_path, output_name=None):
     """Rename folder
 
@@ -3272,7 +3238,6 @@ def rename_folder(input_path, output_name=None):
     return output_path
 
 
-@activity
 def show_folder(input_path=None):
     """Open a folder
 
@@ -3310,7 +3275,6 @@ def show_folder(input_path=None):
     return path
 
 
-@activity
 def move_folder(input_path, output_path=None):
     """Move a folder
 
@@ -3354,7 +3318,6 @@ def move_folder(input_path, output_path=None):
     return output_path
 
 
-@activity
 def remove_folder(input_path, allow_root=False, delete_read_only=True):
     """Remove folder
 
@@ -3399,7 +3362,6 @@ def remove_folder(input_path, allow_root=False, delete_read_only=True):
             return path
 
 
-@activity
 def empty_folder(input_path, allow_root=False):
     """Empty folder
 
@@ -3442,7 +3404,6 @@ def empty_folder(input_path, allow_root=False):
                     os.rmdir(os.path.join(root, name))
 
 
-@activity
 def folder_exists(input_path):
     """Checks if folder exists
 
@@ -3472,7 +3433,6 @@ def folder_exists(input_path):
     return pathlib.Path(path).is_dir()
 
 
-@activity
 def copy_folder(input_path, output_path=None):
     """Copy a folder
 
@@ -3513,7 +3473,6 @@ def copy_folder(input_path, output_path=None):
     return output_path
 
 
-@activity
 def zip_folder(input_path, output_path=None):
     """Zip
 
@@ -3554,7 +3513,6 @@ def zip_folder(input_path, output_path=None):
     return output_path
 
 
-@activity
 def unzip(input_path, output_path=None):
     """Unzip
 
@@ -3603,7 +3561,6 @@ def unzip(input_path, output_path=None):
     return output_path
 
 
-@activity
 def most_recent_file(input_path=None):
     """Return most recent file in directory
 
@@ -3667,7 +3624,6 @@ def wait(seconds=1):
     sleep(seconds)
 
 
-@activity
 def wait_folder_exists(input_path, timeout=60):
     """Wait for folder
 
@@ -6583,7 +6539,6 @@ Icon: las la-at
 """
 
 
-@activity
 def send_mail_smtp(
     smtp_host,
     smtp_user,
@@ -6646,7 +6601,6 @@ Icon: lab la-windows
 """
 
 
-@activity
 def find_window_title(searchterm, partial=True):
     """Find window with specific title
 
@@ -6827,7 +6781,6 @@ def close_remote_desktop():
     os.system("taskkill /f /im mstsc.exe >nul 2>&1")
 
 
-@activity
 def set_user_password(username, password):
     """Set Windows password
 
@@ -6857,7 +6810,6 @@ def set_user_password(username, password):
     user.SetPassword(password)
 
 
-@activity
 def validate_user_password(username, password):
     """Check Windows password
 
@@ -6900,7 +6852,6 @@ def validate_user_password(username, password):
     return True
 
 
-@activity
 def lock_windows():
     """Lock Windows
 
@@ -6924,7 +6875,6 @@ def lock_windows():
     ctypes.windll.user32.LockWorkStation()
 
 
-@activity
 def is_logged_in():
     """Check if Windows logged in
 
@@ -6955,7 +6905,6 @@ def is_logged_in():
         return True
 
 
-@activity
 def is_desktop_locked():
     """Check if Windows is locked
 
@@ -6980,7 +6929,6 @@ def is_desktop_locked():
     return not is_logged_in()
 
 
-@activity
 def get_username():
     """Get Windows username
 
@@ -7007,7 +6955,6 @@ def get_username():
     return getpass.getuser()
 
 
-@activity
 def set_to_clipboard(text):
     """Set clipboard
 
@@ -7041,7 +6988,6 @@ def set_to_clipboard(text):
     win32clipboard.CloseClipboard()
 
 
-@activity
 def get_from_clipboard():
     """Get clipboard
 
@@ -7084,7 +7030,6 @@ def get_from_clipboard():
         win32clipboard.CloseClipboard()
 
 
-@activity
 def clear_clipboard():
     """Empty clipboard
 
@@ -7117,7 +7062,6 @@ def clear_clipboard():
         windll.user32.CloseClipboard()
 
 
-@activity
 def run_vbs_script(script_path, parameters=[]):
     """Run VBSscript
 
@@ -7145,7 +7089,6 @@ def run_vbs_script(script_path, parameters=[]):
     subprocess.call(["cscript.exe", script_path] + parameters)
 
 
-@activity
 def beep(frequency=1000, duration=500):
     """Beep
 
@@ -7176,7 +7119,6 @@ def beep(frequency=1000, duration=500):
     winsound.Beep(frequency, duration)
 
 
-@activity
 def get_all_network_interface_names():
     """Get all network interface names
 
@@ -7207,7 +7149,6 @@ def get_all_network_interface_names():
     return results
 
 
-@activity
 def enable_network_interface(name):
     """Enable network interface
 
@@ -7236,7 +7177,6 @@ def enable_network_interface(name):
     )
 
 
-@activity
 def disable_network_interface(name):
     """Disable network interface
 
@@ -7266,7 +7206,6 @@ def disable_network_interface(name):
     )
 
 
-@activity
 def get_default_printer_name():
     """Get default printer
 
@@ -7292,7 +7231,6 @@ def get_default_printer_name():
     return win32print.GetDefaultPrinter()
 
 
-@activity
 def set_default_printer(name):
     """Set default printer
 
@@ -7318,7 +7256,6 @@ def set_default_printer(name):
     win32print.SetDefaultPrinter(name)
 
 
-@activity
 def remove_printer(name):
     """Remove printer
 
@@ -7344,7 +7281,6 @@ def remove_printer(name):
     win32print.DeletePrinter(name)
 
 
-@activity
 def get_service_status(name):
     """Get service status
 
@@ -7375,7 +7311,6 @@ def get_service_status(name):
             return s.status()
 
 
-@activity
 def start_service(name):
     """Start a service
 
@@ -7401,7 +7336,6 @@ def start_service(name):
     win32serviceutil.StartService(name)
 
 
-@activity
 def stop_service(name):
     """Stop a service
 
@@ -7427,7 +7361,6 @@ def stop_service(name):
     win32serviceutil.StopService(name)
 
 
-@activity
 def set_window_to_foreground(title):
     """Set window to foreground
 
@@ -7460,7 +7393,6 @@ def set_window_to_foreground(title):
     win32gui.SetForegroundWindow(handle)
 
 
-@activity
 def get_foreground_window_title():
     """Get foreground window title
 
@@ -7488,7 +7420,6 @@ def get_foreground_window_title():
     return win32gui.GetWindowText(handle)
 
 
-@activity
 def close_window(title):
     """Close window
 
@@ -7521,7 +7452,6 @@ def close_window(title):
     win32gui.DestroyWindow(handle)
 
 
-@activity
 def maximize_window(title):
     """Maximize window
 
@@ -7556,7 +7486,6 @@ def maximize_window(title):
     win32gui.SetForegroundWindow(handle)
 
 
-@activity
 def restore_window(title):
     """Restore window
 
@@ -7591,7 +7520,6 @@ def restore_window(title):
     win32gui.SetForegroundWindow(handle)
 
 
-@activity
 def minimize_window(title):
     """Minimize window
 
@@ -7624,7 +7552,6 @@ def minimize_window(title):
     win32gui.CloseWindow(handle)
 
 
-@activity
 def resize_window(title, x, y, width, height):
     """Resize window
 
@@ -7667,7 +7594,6 @@ def resize_window(title, x, y, width, height):
     win32gui.SetForegroundWindow(handle)
 
 
-@activity
 def hide_window(title):
     """Hide window
 
@@ -7707,7 +7633,6 @@ Icon: las la-terminal
 """
 
 
-@activity
 def run_ssh_command(user, host, command):
     """Run SSH command
 
@@ -7749,7 +7674,6 @@ Icon: las la-ethernet
 """
 
 
-@activity
 def snmp_get(target, oids, credentials, port=161, engine=None, context=None):
     """SNMP Get
 
@@ -7891,7 +7815,6 @@ Icon: las la-toolbox
 """
 
 
-@activity
 def home_path(filename=None):
     """Get user home path
 
@@ -7927,7 +7850,6 @@ def home_path(filename=None):
     return os.path.expanduser("~")
 
 
-@activity
 def desktop_path(filename=None):
     """Get desktop path
 
@@ -7964,7 +7886,6 @@ def desktop_path(filename=None):
     return os.path.join(os.path.expanduser("~"), "Desktop")
 
 
-@activity
 def downloads_path():
     """Get downloads path
 
@@ -7999,7 +7920,6 @@ def downloads_path():
         return os.path.join(os.path.expanduser("~"), "downloads")
 
 
-@activity
 def open_file(input_path):
     """Open file
 
@@ -8041,7 +7961,6 @@ def open_file(input_path):
     return path
 
 
-@activity
 def set_wallpaper(image_path):
     """Set wallpaper
 
@@ -8075,7 +7994,6 @@ def set_wallpaper(image_path):
     ctypes.windll.user32.SystemParametersInfoW(20, 0, image_path, 0)
 
 
-@activity
 def download_file_from_url(url, output_path=None):
     """Download file from a URL
 
@@ -8129,7 +8047,6 @@ Icon: las la-laptop
 """
 
 
-@activity
 def rename_file(input_path, output_name=None):
     """Rename a file
 
@@ -8169,7 +8086,6 @@ def rename_file(input_path, output_name=None):
     return output_path
 
 
-@activity
 def move_file(input_path, output_path=None):
     """Move a file
 
@@ -8212,7 +8128,6 @@ def move_file(input_path, output_path=None):
     return output_path
 
 
-@activity
 def remove_file(path):
     """Remove a file
 
@@ -8245,7 +8160,6 @@ def remove_file(path):
     return path
 
 
-@activity
 def file_exists(path):
     """Check if file exists
 
@@ -8277,7 +8191,6 @@ def file_exists(path):
     return os.path.isfile(path)
 
 
-@activity
 def wait_file_exists(path, timeout=60):
     """Wait until a file exists.
 
@@ -8312,7 +8225,6 @@ def wait_file_exists(path, timeout=60):
         sleep(1)
 
 
-@activity
 def write_list_to_file(list_to_write, file_path):
     """List to .txt
 
@@ -8346,7 +8258,6 @@ def write_list_to_file(list_to_write, file_path):
         filehandle.writelines("%s\n" % place for place in list_to_write)
 
 
-@activity
 def read_list_from_txt(input_path):
     """Read list from .txt file
 
@@ -8388,7 +8299,6 @@ def read_list_from_txt(input_path):
     return written_list
 
 
-@activity
 def read_from_txt(input_path):
     """Read .txt file
 
@@ -8423,7 +8333,6 @@ def read_from_txt(input_path):
     return filecontents
 
 
-@activity
 def append_line(text, file_path):
     """Append to .txt
 
@@ -8464,7 +8373,6 @@ def append_line(text, file_path):
         f.write("\n" + text)
 
 
-@activity
 def make_text_file(text="Sample text", output_path=None):
     """Make text file
 
@@ -8514,7 +8422,6 @@ def make_text_file(text="Sample text", output_path=None):
     return output_path
 
 
-@activity
 def read_text_file_to_list(file_path):
     """Read .txt file with newlines to list
 
@@ -8549,7 +8456,6 @@ def read_text_file_to_list(file_path):
     return result
 
 
-@activity
 def copy_file(input_path, output_path=None):
     """Copy a file
 
@@ -8592,7 +8498,6 @@ def copy_file(input_path, output_path=None):
     return output_path
 
 
-@activity
 def get_file_extension(file_path):
     """Get file extension
 
@@ -8628,7 +8533,6 @@ def get_file_extension(file_path):
     return file_extension
 
 
-@activity
 def send_to_printer(file_path):
     """Print
 
@@ -8905,7 +8809,6 @@ def extract_images_from_pdf(file_path):
     return extracted_images
 
 
-@activity
 def apply_watermark_to_pdf(file_path, watermark_path, output_path=""):
     """Watermark a PDF
 
@@ -8970,7 +8873,6 @@ Icon: las la-wave-square
 """
 
 
-@activity
 def get_cpu_load(measure_time=1):
     """CPU load
 
@@ -9003,7 +8905,6 @@ def get_cpu_load(measure_time=1):
     return sum(cpu_measurements) / len(cpu_measurements)
 
 
-@activity
 def get_number_of_cpu(logical=True):
     """Count CPU
 
@@ -9031,7 +8932,6 @@ def get_number_of_cpu(logical=True):
     return psutil.cpu_count(logical=logical)
 
 
-@activity
 def get_cpu_frequency():
     """CPU frequency
 
@@ -9056,7 +8956,6 @@ def get_cpu_frequency():
     return psutil.cpu_freq()
 
 
-@activity
 def get_cpu_stats():
     """CPU Stats
 
@@ -9080,7 +8979,6 @@ def get_cpu_stats():
     return psutil.cpu_stats()
 
 
-@activity
 def get_memory_stats(mem_type="swap"):
     """Memory statistics
 
@@ -9111,7 +9009,6 @@ def get_memory_stats(mem_type="swap"):
         return psutil.swap_memory()
 
 
-@activity
 def get_disk_stats():
     """Disk stats
 
@@ -9135,7 +9032,6 @@ def get_disk_stats():
     return psutil.disk_usage("/")
 
 
-@activity
 def get_disk_partitions():
     """Partition info
 
@@ -9160,7 +9056,6 @@ def get_disk_partitions():
     return psutil.disk_partitions()
 
 
-@activity
 def get_boot_time():
     """Boot time
 
@@ -9184,7 +9079,6 @@ def get_boot_time():
     return psutil.boot_time()
 
 
-@activity
 def get_time_since_last_boot():
     """Uptime
 
@@ -9215,7 +9109,6 @@ Icon: las la-photo-video
 """
 
 
-@activity
 def show_image(file_path):
     """Show image
 
@@ -9246,7 +9139,6 @@ def show_image(file_path):
     im.show()
 
 
-@activity
 def rotate_image(file_path, angle=90):
     """Rotate image
 
@@ -9281,7 +9173,6 @@ def rotate_image(file_path, angle=90):
     im.rotate(angle, expand=True).save(file_path)
 
 
-@activity
 def resize_image(file_path, size):
     """Resize image
 
@@ -9315,7 +9206,6 @@ def resize_image(file_path, size):
     im.resize(size).save(file_path)
 
 
-@activity
 def get_image_width(file_path):
     """Get image width
 
@@ -9350,7 +9240,6 @@ def get_image_width(file_path):
     return width
 
 
-@activity
 def get_image_height(file_path):
     """Get image height
 
@@ -9386,7 +9275,6 @@ def get_image_height(file_path):
     return height
 
 
-@activity
 def crop_image(file_path, box=None):
     """Crop image
 
@@ -9420,7 +9308,6 @@ def crop_image(file_path, box=None):
     im.crop(box).save(file_path)
 
 
-@activity
 def mirror_image_horizontally(file_path):
     """Mirror image horizontally
 
@@ -9452,7 +9339,6 @@ def mirror_image_horizontally(file_path):
     im.transpose(Image.FLIP_LEFT_RIGHT).save(file_path)
 
 
-@activity
 def mirror_image_vertically(file_path):
     """Mirror image vertically
 
@@ -9490,7 +9376,6 @@ Icon: las la-play
 """
 
 
-@activity
 def run_manual(task):
     """Windows run
 
@@ -9531,7 +9416,6 @@ def run_manual(task):
     press_key("enter")
 
 
-@activity
 def run(process):
     """Run process
 
@@ -9556,7 +9440,6 @@ def run(process):
     subprocess.Popen(process)
 
 
-@activity
 def is_process_running(name):
     """Check if process is running
 
@@ -9591,7 +9474,6 @@ def is_process_running(name):
     return False
 
 
-@activity
 def get_running_processes():
     """Get running processes
 
@@ -9621,7 +9503,6 @@ def get_running_processes():
     return list(set(process_list))
 
 
-@activity
 def kill_process(name=None):
     """Kill process
 
@@ -9960,7 +9841,6 @@ Icon: las la-robot
 """
 
 
-@activity
 def execute_uipath_process(
     project_file_path, arguments=None, uirobot_exe_path=None
 ):
@@ -10030,7 +9910,6 @@ Icon: las la-robot
 """
 
 
-@activity
 def run_autoit_script(script_path, arguments=None, autoit_exe_path=None):
     """Execute a AutoIt script
 
@@ -10099,7 +9978,6 @@ Icon: las la-robot
 """
 
 
-@activity
 def execute_robotframework_test(test_case_path, variables=None):
     """Execute a Robot Framework test case
 
@@ -10153,7 +10031,6 @@ def execute_robotframework_test(test_case_path, variables=None):
     print('Completed Robot Framework test case "{}"'.format(test_case_path))
 
 
-@activity
 def run_blueprism_process(
     process_name,
     username="",
@@ -10237,7 +10114,6 @@ def run_blueprism_process(
     print('Completed Blue Prism process "{}"'.format(test_case_path))
 
 
-@activity
 def run_automationanywhere_task(task_file_path, aaplayer_exe_path=None):
     """Run an Automation Anywhere task
 
@@ -10373,7 +10249,6 @@ class SAPGUI:
                 "Could not connect to the SAP GUI. Did you enable scripting in the SAP GUI?"
             )
 
-    @activity
     def quit(self):
         """Quit SAP GUI
 
@@ -10406,7 +10281,6 @@ class SAPGUI:
 
         return connections
 
-    @activity
     def login(self, environment, client, username, password, force=True):
         """Log in to SAP GUI
 
@@ -10460,7 +10334,6 @@ class SAPGUI:
             except:
                 pass
 
-    @activity
     def click_sap(self, identifier):
         """Click on a SAP GUI element
 
@@ -10486,7 +10359,6 @@ class SAPGUI:
         """
         self.sapgui.findById(identifier).Press()
 
-    @activity
     def get_text(self, identifier):
         """Get text from a SAP GUI element
 
@@ -10513,7 +10385,6 @@ class SAPGUI:
         """
         return self.sapgui.findById(identifier).text
 
-    @activity
     def set_text(self, identifier, text):
         """Set text of a SAP GUI element
 
@@ -10539,7 +10410,6 @@ class SAPGUI:
         """
         self.sapgui.FindById(identifier).text = text
 
-    @activity
     def highlight(self, identifier, duration=1):
         """Highlights a SAP GUI element
 
@@ -10577,7 +10447,6 @@ Icon: las la-robot
 """
 
 
-@activity
 def create_new_job_in_portal(
     process_name, process_version_id=None, priority=0, parameters=None
 ):
@@ -10656,7 +10525,6 @@ def create_new_job_in_portal(
         print(result["message"])
 
 
-@activity
 def get_credential_from_portal(credential_name):
     """Get a credential from the Automagica Portal
 
@@ -10846,7 +10714,6 @@ def get_center_of_rectangle(rectangle):
     )
 
 
-@activity
 def is_visible(automagica_id, delay=1, timeout=30):
     """Check if element is visible on screen
 
@@ -10885,7 +10752,6 @@ def is_visible(automagica_id, delay=1, timeout=30):
         return False
 
 
-@activity
 def wait_appear(automagica_id, delay=1, timeout=30):
     """Wait for an element to appear
 
@@ -10936,7 +10802,6 @@ def wait_appear(automagica_id, delay=1, timeout=30):
         )
 
 
-@activity
 def wait_vanish(automagica_id, delay=1, timeout=30):
     """Wait Vanish
 
@@ -10984,7 +10849,6 @@ def wait_vanish(automagica_id, delay=1, timeout=30):
         )
 
 
-@activity
 def read_text(automagica_id, delay=1):
     """Read Text with Automagica Wand
 
