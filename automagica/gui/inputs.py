@@ -673,6 +673,9 @@ class ActivitySelectionFrame(tk.Frame):
         """
         query = self.search_entry.get()
 
+        if query == self.search_entry.placeholder:
+            return
+
         # Clean query
         query = query.strip()
         query = query.lower()
@@ -689,7 +692,6 @@ class ActivitySelectionFrame(tk.Frame):
                 )  # Matches keywords
                 or query in val["name"].lower()  # Matches name
                 or query in val["description"].lower()  # Matches description
-                or query == "Search activities...".lower()
             ):
                 results.append(val)
 
