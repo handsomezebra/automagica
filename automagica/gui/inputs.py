@@ -105,13 +105,12 @@ class InputField(tk.Entry):
 
     def on_focus_in(self, event=None):
         if self.placeholder:  # Clear the field if a placeholder is defined
-            self.delete("0", tk.END)
+            if self.get() == self.placeholder:
+                self.delete("0", tk.END)
 
     def on_focus_out(self, event=None):
         if self.placeholder:
-            if (
-                self.get() == ""
-            ):  # If the field is empty, set the placeholder value
+            if (self.get() == ""):  # If the field is empty, set the placeholder value
                 self.insert(tk.END, self.placeholder)
 
 
