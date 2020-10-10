@@ -22,7 +22,7 @@ class LinkedIn:
             linkedin
 
         Icon
-            lar la-file-word
+            lar la-linkedin
 
         """
         self.browser = Chrome()
@@ -45,7 +45,7 @@ class LinkedIn:
             linkedin, login
 
         Icon
-            las la-images
+            las la-linkedin
 
         """
         elem = self.browser.by_xpath("//*[@id=\"session_key\"]")
@@ -72,7 +72,7 @@ class LinkedIn:
             linkedin, find, contact
 
         Icon
-            las la-images
+            las la-linkedin
 
         """
         elem = self.browser.by_class("search-global-typeahead__input")
@@ -114,7 +114,7 @@ class LinkedIn:
             linkedin, find, contact
 
         Icon
-            las la-images
+            las la-linkedin
 
         """
         pass
@@ -129,7 +129,7 @@ class LinkedIn:
             linkedin, send, message
 
         Icon
-            las la-images
+            las la-linkedin
 
         """
         pass
