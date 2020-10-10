@@ -405,6 +405,7 @@ class ActivityNodeGraph(NodeGraph):
             "salesforce",
             "chrome",
             "readme",
+            "linkedin"
         ]:
             icon_name = icon_name + "-solid.png"
         else:

@@ -575,6 +575,7 @@ class ActivityBlock:
             "salesforce",
             "chrome",
             "readme",
+            "linkedin"
         ]:
             icon_name = icon_name + "-solid.png"
         else:
