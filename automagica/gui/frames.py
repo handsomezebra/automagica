@@ -466,12 +466,12 @@ class ToolbarFrame(tk.Frame):
     def __init__(self, parent, height=None, width=None):
         super().__init__(parent, height=height, width=width)
 
-        self.configure(bg=config.COLOR_0)
+        self.configure(bg=config.COLOR_9)
         self.parent = parent
 
         logo_canvas = tk.Canvas(
             self,
-            bg=config.COLOR_0,
+            bg=config.COLOR_9,
             width=175,
             height=45,
             bd=0,
