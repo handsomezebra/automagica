@@ -3,6 +3,7 @@
 from .utilities import activity, only_supported_for, interpret_path
 import selenium.webdriver
 import logging
+from time import sleep
 
 """
 LinkedIn Application
@@ -24,13 +25,21 @@ class LinkedIn:
             lar la-file-word
 
         """
-        pass
+        self.browser = Chrome()
+        self.browser.get('https://www.linkedin.com')
 
     @activity
-    def login(self):
+    def login(self, email_or_phone, password):
         """Login
 
-        Login
+        Login into LinkedIn
+
+        :parameter email_or_phone: Email or phone number for login
+        :type email_or_phone: string
+        :parameter password: password
+        :type password: string
+
+        :return: Webpage
 
         Keywords
             linkedin, login
@@ -39,13 +48,25 @@ class LinkedIn:
             las la-images
 
         """
-        pass
+        elem = self.browser.by_xpath("//*[@id=\"session_key\"]")
+        elem.send_keys(email_or_phone)
+
+        elem = self.browser.by_xpath("//*[@id=\"session_password\"]")
+        elem.send_keys(password)
+
+        elem.submit()
+
 
     @activity
-    def find_contact(self):
+    def find_contact(self, query):
         """Find contact
 
         Find contact
+
+        :parameter query: query for the contact
+        :type query: string
+
+        :return: Webpage
 
         Keywords
             linkedin, find, contact
@@ -54,7 +75,34 @@ class LinkedIn:
             las la-images
 
         """
-        pass
+        elem = self.browser.by_class("search-global-typeahead__input")
+        elem.send_keys(query)
+        elem.send_keys("\n")
+        sleep(3)
+        self.browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        sleep(1)
+        elems = self.browser.by_classes("search-result__info")
+
+        for elem in elems:
+            self.browser.highlight(elem, "yellow")
+            sleep(0.5)
+            self.browser.highlight(elem, "grey")
+            sleep(0.5)
+
+        button = self.browser.by_class("artdeco-pagination__button--next")
+        if button.get_attribute("disabled") != "true":
+            button.click()
+            sleep(3)
+            self.browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            sleep(1)
+            elems = self.browser.by_classes("search-result__info")
+
+            for elem in elems:
+                self.browser.highlight(elem, "yellow")
+                sleep(0.5)
+                self.browser.highlight(elem, "grey")
+                sleep(0.5)
+
 
     @activity
     def invite_contact(self):
@@ -1571,14 +1619,15 @@ class Chrome(selenium.webdriver.Chrome):
 
         return self.find_element_by_tag_name("body").text
 
-    @activity
-    def highlight(self, element):
+    def highlight(self, element, color):
         """Highlight element
 
-        Highlight elements in yellow in the browser
+        Highlight elements in specified color in the browser
 
         :parameter element: Element to highlight
         :type element: selenium.webdriver.remote.webelement.WebElement
+        :parameter color: highlight color
+        :type color: string
 
             :Example:
 
@@ -1605,7 +1654,7 @@ class Chrome(selenium.webdriver.Chrome):
                 "arguments[0].setAttribute('style', arguments[1]);", element, s
             )
 
-        apply_style("background: yellow; border: 2px solid red;")
+        apply_style("background: %s;" % color)
 
     @activity
     def exit(self):
@@ -2279,7 +2328,6 @@ def press_key(key=None, delay=1, perform_n_times=1, delay_between=0.5):
 
     """
     if delay:
-        from time import sleep
 
         sleep(delay)
 
@@ -2339,7 +2387,6 @@ def press_key_combination(
     """
 
     if delay:
-        from time import sleep
 
         sleep(delay)
 
@@ -2409,7 +2456,6 @@ def typing(
     """
 
     if delay:
-        from time import sleep
 
         sleep(delay)
 
@@ -2437,11 +2483,10 @@ def typing(
     import win32com.client
 
     shell = win32com.client.dynamic.Dispatch("WScript.Shell")
-    import time
 
     for character in text:
         shell.SendKeys(easy_key_translation(character), 0)
-        time.sleep(interval_seconds)
+        sleep(interval_seconds)
 
 
 """
@@ -2475,7 +2520,6 @@ def get_mouse_position(delay=None, to_clipboard=False):
         las la-mouse
     """
     from mouse import get_position
-    from time import sleep
 
     if delay:
         sleep(delay)
@@ -2514,7 +2558,6 @@ def display_mouse_position(duration=10):
         return
 
     from mouse import get_position
-    from time import sleep
 
     duration_half = int(duration / 2)
     for i in range(0, duration_half, 2):
@@ -2554,8 +2597,6 @@ def click(automagica_id, delay=1):
     from mouse import move as move_
 
     if delay:
-        from time import sleep
-
         sleep(delay)  # Default delay
 
     location = detect_vision(automagica_id)
@@ -2593,8 +2634,6 @@ def click_coordinates(x=None, y=None, delay=1):
     from mouse import move as move_
 
     if delay:
-        from time import sleep
-
         sleep(delay)  # Default delay
 
     if x and y:
@@ -2634,8 +2673,6 @@ def double_click_coordinates(x=None, y=None, delay=1):
     from mouse import move as move_
 
     if delay:
-        from time import sleep
-
         sleep(delay)  # Default delay
 
     if x and y:
@@ -2676,8 +2713,6 @@ def double_click(automagica_id=None, delay=1):
     from mouse import move as move_
 
     if delay:
-        from time import sleep
-
         sleep(delay)  # Default delay
 
     if automagica_id:
@@ -2721,8 +2756,6 @@ def right_click(automagica_id=None, delay=1):
     from mouse import move as move_
 
     if delay:
-        from time import sleep
-
         sleep(delay)  # Default delay
 
     if automagica_id:
@@ -2765,8 +2798,6 @@ def right_click_coordinates(x=None, y=None, delay=1):
     from mouse import move as move_
 
     if delay:
-        from time import sleep
-
         sleep(delay)  # Default delay
 
     if x and y:
@@ -2811,8 +2842,6 @@ def move_mouse_to(automagica_id=None, delay=1):
     from mouse import move as move_
 
     if delay:
-        from time import sleep
-
         sleep(delay)  # Default delay
 
     if automagica_id:
@@ -2855,8 +2884,6 @@ def move_mouse_to_coordinates(x=None, y=None, delay=1):
     from mouse import move as move_
 
     if delay:
-        from time import sleep
-
         sleep(delay)  # Default delay
 
     if x and y:
@@ -2924,8 +2951,6 @@ def drag_mouse_to_coordinates(x=None, y=None, end_x=0, end_y=0, delay=1):
         las la-arrows-alt
     """
     if delay:
-        from time import sleep
-
         sleep(delay)  # Default delay
 
     if x and y:
@@ -2968,8 +2993,6 @@ def drag_mouse_to(automagica_id=None, end_x=0, end_y=0, delay=1):
         las la-arrows-alt
     """
     if delay:
-        from time import sleep
-
         sleep(delay)  # Default delay
 
     if automagica_id:
@@ -3614,8 +3637,6 @@ def wait(seconds=1):
     Icon
         las la-hourglass
     """
-    from time import sleep
-
     sleep(seconds)
 
 
@@ -3643,7 +3664,6 @@ def wait_folder_exists(input_path, timeout=60):
     Icon
         las la-hourglass
     """
-    from time import sleep
     import os
 
     path = interpret_path(input_path)
@@ -8208,7 +8228,6 @@ def wait_file_exists(path, timeout=60):
         las la-list-alt
 
     """
-    from time import sleep
     import os
 
     path = interpret_path(path)
@@ -9724,8 +9743,6 @@ def click_on_text_ocr(text, delay=1):
         las la-mouse-pointer
     """
     if delay:
-        from time import sleep
-
         sleep(delay)
 
     position = find_text_on_screen_ocr(text, criteria="first")
@@ -9768,8 +9785,6 @@ def double_click_on_text_ocr(text, delay=1):
 
     """
     if delay:
-        from time import sleep
-
         sleep(delay)
 
     position = find_text_on_screen_ocr(text, criteria="first")
@@ -9812,8 +9827,6 @@ def right_click_on_text_ocr(text, delay=1):
     """
 
     if delay:
-        from time import sleep
-
         sleep(delay)
 
     position = find_text_on_screen_ocr(text, criteria="first")
@@ -10216,7 +10229,6 @@ class SAPGUI:
         """
         from subprocess import Popen
         import win32com.client
-        from time import sleep
 
         # Run SAP process
         if not sap_logon_exe_path:
@@ -10426,7 +10438,6 @@ class SAPGUI:
         Icon
             las la-briefcase
         """
-        from time import sleep
 
         self.sapgui.FindById(identifier).Visualize(1)
 
@@ -10774,8 +10785,6 @@ def wait_appear(automagica_id, delay=1, timeout=30):
     Icon
         las la-eye
     """
-    from time import sleep
-
     sleep(delay)  # Default delay
 
     increment = 5
@@ -10822,8 +10831,6 @@ def wait_vanish(automagica_id, delay=1, timeout=30):
     Icon
         las la-eye
     """
-    from time import sleep
-
     sleep(delay)  # Default delay
 
     increment = 5
@@ -10874,8 +10881,6 @@ def read_text(automagica_id, delay=1):
     import base64
     import os
     import json
-
-    from time import sleep
 
     sleep(delay)  # Default delay
 
